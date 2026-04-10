@@ -5,16 +5,16 @@ def greenLetters(greenInput):
             pass
         else:
             greenFakeDict.append((letter,[v for v, x in enumerate(greenInput) if x == letter]))
-    print(greenFakeDict)
     return greenFakeDict
 
 def greenFilter(greenDict):
     result = []
     with open("prep/backup/wordlelist.txt", "r") as reference:
         for word in reference:
+            reformat = word.rstrip()
             listFormat = []
             auth = True
-            for char in word:
+            for char in reformat:
                 listFormat.append((char,[v for v, x in enumerate(word) if x==char]))
             for letterUnit in greenDict:
                 if letterUnit not in listFormat:
@@ -23,7 +23,9 @@ def greenFilter(greenDict):
                 else:
                     pass
             if auth == True:
-                result.append(word)
+                print(listFormat)
+                print(reformat)
+                result.append(reformat)
     print(result[0])
     return result
 
@@ -38,6 +40,7 @@ def thinker():
     greenInput = input("Skriv här: ").lower()
     greenDict = greenLetters(greenInput)
     firstRound = greenFilter(greenDict)
+    print(greenDict)
 
     
 
