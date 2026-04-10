@@ -10,44 +10,20 @@ def greenLetters(greenInput):
 
 def greenFilter(greenDict):
     result = []
-    trash = []
     with open("prep/backup/wordlelist.txt", "r") as reference:
         for word in reference:
-            passedLetters = []
-            auth = False
-            for letter in greenDict:
-                if letter[0] in passedLetters:
-                    modWord = word.replace(word[word.index(letter[0])], "")
-                    print(modWord)
-                    modWordIndex = modWord.index(letter[0]) + 1
-                    print(modWord)
-                    if letter[0] not in modWord:
-                        trash.append(word)
-                        auth = True
-                        break
-                    elif letter[1][0] != modWordIndex:
-                        trash.append(word)
-                        auth = True
-                        break
-                    else:
-                        passedLetters.append(letter[0])
-                        pass
+            listFormat = []
+            auth = True
+            for char in word:
+                listFormat.append((char,[v for v, x in enumerate(word) if x==char]))
+            for letterUnit in greenDict:
+                if letterUnit not in listFormat:
+                    auth = False
+                    break
                 else:
-                    if letter[0] not in word:
-                        trash.append(word)
-                        auth = True
-                        break
-                    elif letter[1][0] != word.index(letter[0]):
-                        trash.append(word)
-                        auth = True
-                        break
-                    else:
-                        passedLetters.append(letter[0])
-                        pass
-            if auth == False:
+                    pass
+            if auth == True:
                 result.append(word)
-            else:
-                pass
     print(result[0])
     return result
 

@@ -1,0 +1,36 @@
+        for word in reference:
+            passedLetters = []
+            count = 0
+            auth = False
+            remaining = [x for x in word.rstrip()]
+            for letter in greenDict:
+                if letter[0] in passedLetters and letter[0] in remaining:
+                    print(letter[0])
+                    print(count)
+                    print(remaining)
+                    print(passedLetters)
+                    if letter[1][greenDict.count(letter) - passedLetters.count(letter[0])] == (remaining.index(letter[0]) + count):
+                        remaining.remove(letter[0])
+                        passedLetters.append(letter[0])
+                        print(auth)
+                    else:
+                        auth = True
+                        break
+                else:
+                    if letter[0] not in remaining:
+                        auth = True
+                        break
+                    elif letter[1][0] != word.index(letter[0]):
+                        auth = True
+                        break    
+                    else:
+                        print(count)
+                        print(remaining)
+                        print(passedLetters)
+                        passedLetters.append(letter[0])
+                        remaining.remove(letter[0])
+                count += 1
+            if auth == False:
+                result.append(word)
+            else:
+                pass
