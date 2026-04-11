@@ -34,3 +34,39 @@
                 result.append(word)
             else:
                 pass
+
+
+    if lettercheck != []:
+        for word in firstRound:
+            auth = True
+            remaining = [char for char in word]
+            for letter in yellowList:
+                if letter in lettercheck:
+                    for char in greenDict:
+                        if char[0] == letter:
+                            indexRef = [v for v, x in enumerate(word) if x==letter]
+                            if char[1] == indexRef:
+                                auth == False
+                                break
+                            else:
+                                remaining.remove(letter)
+                else:
+                    if letter not in remaining:
+                        auth = False
+                        break
+                    else:
+                        remaining.remove(letter)
+            if auth == True:
+                result.append(word)
+    else:
+        for word in firstRound:
+            auth = True
+            remaining = [char for char in word]
+            for letter in yellowList:
+                if letter not in remaining:
+                    auth = False
+                    break
+                else:
+                    remaining.remove(letter)
+            if auth == True:
+                result.append(word)
