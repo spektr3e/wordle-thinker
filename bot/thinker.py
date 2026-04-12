@@ -80,10 +80,13 @@ def yellowFilter(yellowInput, greenDict, firstRound):
             result.append(word)
     return result
 
+def greyFilter(greyInput, secondRound):
+    pass
+
 def printer(result):
-    if len(result) < 21:
+    if len(result) < 31:
         count = 0
-        while count < 19:
+        while count < 29:
             try:
                 print(result[count])
                 count += 1
