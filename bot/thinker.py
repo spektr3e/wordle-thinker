@@ -81,7 +81,14 @@ def yellowFilter(yellowInput, greenDict, firstRound):
     return result
 
 def greyFilter(greyInput, secondRound):
-    pass
+    greyList = [letter for letter in greyInput if letter != "," and letter != " "]
+    for word in secondRound:
+        for letter in greyList:
+            if letter in word:
+                secondRound.remove(word)
+            else:
+                pass
+    return secondRound
 
 def printer(result):
     if len(result) < 31:
@@ -107,7 +114,10 @@ def thinker():
     print("Om bokstaven förekommer mer än en gång samtidigt som gul skriv den 2 gånger")
     yellowInput = input("Skriv här: ").lower()
     secondRound = yellowFilter(yellowInput, greenDict, firstRound)
-    printer(secondRound)
+    print("Skriv gråa bokstäver här i någon av formaten: x, y, z / xyz")
+    greyInput = input("Skriv här: ").lower()
+    result = greyFilter(greyInput, secondRound)
+    printer(result)
 
 def main():
     thinker()
