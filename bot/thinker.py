@@ -15,15 +15,27 @@ def greenFilter(greenDict):
         for word in reference:
             reformat = word.rstrip()
             listFormat = []
-            auth = True
+            auth = False
             for char in reformat:
-                listFormat.append((char,[v for v, x in enumerate(word) if x==char]))
+                listFormat.append((char,[v for v, x in enumerate(reformat) if x==char]))
             for letterUnit in greenDict:
-                if letterUnit not in listFormat:
+                verify = True
+                if letterUnit in listFormat:
+                    auth = True
+                elif letterUnit[0] in reformat:
+                    indexList = [v for v, x in enumerate(reformat) if x==letterUnit[0]]
+                    for index in letterUnit[1]:
+                        if index in indexList:
+                            auth = True
+                        else:
+                            auth = False
+                            verify = False
+                            break
+                    if verify == False:
+                        break
+                else:
                     auth = False
                     break
-                else:
-                    pass
             if auth == True:
                 result.append(reformat)
     print(result[0])
