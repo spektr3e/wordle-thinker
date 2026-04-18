@@ -82,12 +82,16 @@ def yellowFilter(yellowInput, greenDict, firstRound):
 
 def greyFilter(greyInput, secondRound):
     greyList = [letter for letter in greyInput if letter != "," and letter != " "]
+    verify = True
     for word in secondRound:
         for letter in greyList:
             if letter in word:
-                secondRound.remove(word)
+                verify = False
+                break
             else:
                 pass
+        if verify == False:
+            secondRound.remove(word)
     return secondRound
 
 def printer(result):
