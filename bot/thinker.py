@@ -109,7 +109,7 @@ def printer(result):
         print("Det finns för många alternativ kvar!")
 
 def thinker():
-    print("Välkommen till wordle-tänkaren!")
+    print("Välkommen till wordle-tänkaren! Notera att för tillfället behövs gröna bokstäver!")
     print("Skriv bokstäverna där de är gröna och sätt '_' på ställen där de inte är")
     greenInput = input("Skriv här: ").lower()
     greenDict = greenLetters(greenInput)
